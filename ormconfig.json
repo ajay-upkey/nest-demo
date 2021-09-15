@@ -4,8 +4,8 @@
 	"port": "3306",
 	"username": "root",
 	"password": null,
-	"database": "nest-demo",
-	"synchronize": true,
+	"database": "nest-demo1",
+	"synchronize": false,
 	"logging": true,
 	"entities": [
 		"dist/**/*.entity{.ts,.js}"

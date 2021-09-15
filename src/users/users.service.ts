@@ -2,14 +2,14 @@ import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UsersEntity } from './users.entity';
-import { UsersDTO } from './users.dto';
+import { User } from 'src/users/entities/user.entity';
+import { UsersDTO } from './dto/users.dto';
 
 @Injectable()
 export class UsersService {
 	constructor(
-		@InjectRepository(UsersEntity)
-		private usersRepository: Repository<UsersEntity>,
+		@InjectRepository(User)
+		private usersRepository: Repository<User>,
 	) {}
 
 	async showAll() {

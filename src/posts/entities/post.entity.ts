@@ -1,4 +1,4 @@
-import { UsersEntity } from './../../users/users.entity';
+import { User } from 'src/users/entities/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity('posts')
@@ -14,18 +14,18 @@ export class Post {
 
     // user_id
     @ManyToOne(
-        () => UsersEntity,
+        () => User,
         user => user.posts,
         { onDelete: 'CASCADE' }
     )
     @JoinColumn()
-    user: UsersEntity;
+    user: User;
 
     // JoinTable will create new pivote table
     @ManyToMany(
-        () => UsersEntity,
+        () => User,
         (user) => user.posts
     )
     @JoinTable()
-    users: UsersEntity[];
+    users: User[];
 }
