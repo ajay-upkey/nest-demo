@@ -7,23 +7,22 @@ import {
     Body,
     Param,
     HttpStatus,
+    UseInterceptors,
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { UsersDTO } from './dto/users.dto';
+import { ResponseInterceptor } from 'src/interceptors/response.interceptor';
 
 @Controller('users')
 export class UsersController {
     constructor(private usersService: UsersService) { }
 
     @Get()
+    @UseInterceptors(ResponseInterceptor)
     async showAllUsers() {
         const users = await this.usersService.showAll();
-        return {
-            statusCode: HttpStatus.OK,
-            message: 'Users fetched successfully',
-            users
-        };
+        return users;
     }
 
     @Post()
