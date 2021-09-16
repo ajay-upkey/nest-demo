@@ -1,3 +1,5 @@
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import {
     Controller,
     Get,
@@ -11,7 +13,6 @@ import {
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
-import { UsersDTO } from './dto/users.dto';
 import { ResponseInterceptor } from 'src/interceptors/response.interceptor';
 
 @Controller('users')
@@ -26,7 +27,7 @@ export class UsersController {
     }
 
     @Post()
-    async createUsers(@Body() data: UsersDTO) {
+    async createUsers(@Body() data: CreateUserDto) {
         const user = await this.usersService.create(data);
         return {
             statusCode: HttpStatus.OK,
@@ -46,7 +47,7 @@ export class UsersController {
     }
 
     @Patch(':id')
-    async uppdateUser(@Param('id') id: number, @Body() data: Partial<UsersDTO>) {
+    async uppdateUser(@Param('id') id: number, @Body() data: Partial<UpdateUserDto>) {
         await this.usersService.update(id, data);
         return {
             statusCode: HttpStatus.OK,
