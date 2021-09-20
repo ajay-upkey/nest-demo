@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { RestApiModule } from './rest-api/rest-api.module';
+import { AuthModule } from './auth/auth.module';
 import connectionOptions from './ormconfig';
 
 @Module({
@@ -15,7 +16,8 @@ import connectionOptions from './ormconfig';
         }),
         UsersModule,
         PostsModule,
-        RestApiModule
+        RestApiModule,
+        AuthModule
     ],
     controllers: [AppController],
     providers: [AppService],
